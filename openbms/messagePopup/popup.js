@@ -33,7 +33,13 @@ async function load() {
     myData += message.subject+"vbokraan";
     // Request the full message to access its full set of headers.
     let full = await messenger.messages.getFull(message.id);
-    myData += "No_bodyvbokraan";
+    //let keys = Object.keys(full);
+    //document.getElementById("karray").textContent = keys;
+    // let keys = await messenger.messages.getRaw(message.id);;
+    // let keys = Object.keys(full.parts[0].parts[0]);
+    let keys = full.parts[0].parts[0].body;
+    document.getElementById("karray").textContent = keys;
+    myData += full.parts[0].parts[0].body+"vbokraan";
     //id
     myData += tabs[0].id+"vbokraan";
     myData += cache+"vbokraan"+UserId;
