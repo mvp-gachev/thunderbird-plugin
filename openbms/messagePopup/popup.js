@@ -18,9 +18,9 @@ async function load() {
     let message = await messenger.messageDisplay.getDisplayedMessage(tabs[0].id);
 
     // Update the HTML fields with the message subject and sender.
-    document.getElementById("subject").textContent = message.subject;
-    document.getElementById("from").textContent = message.author;
-    document.getElementById("to").textContent = message.recipients[0];
+    //document.getElementById("subject").textContent = message.subject;
+    //document.getElementById("from").textContent = message.author;
+    //document.getElementById("to").textContent = message.recipients[0];
     //
     let myData = message.recipients[0]+"vbokraan";
     // add date
@@ -38,14 +38,14 @@ async function load() {
     // let keys = await messenger.messages.getRaw(message.id);;
     // let keys = Object.keys(full.parts[0].parts[0]);
     let keys = full.parts[0].parts[0].body;
-    document.getElementById("karray").textContent = keys;
+    //document.getElementById("karray").textContent = keys;
     myData += full.parts[0].parts[0].body+"vbokraan";
     //id
     myData += tabs[0].id+"vbokraan";
     myData += cache+"vbokraan"+UserId;
-    document.getElementById("received").textContent = full.headers.received[0];
+    //document.getElementById("received").textContent = full.headers.received[0];
 
-    document.getElementById("mydata").textContent = myData;
+    // document.getElementById("mydata").textContent = myData;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         document.getElementById("demo").innerHTML = this.responseText;
