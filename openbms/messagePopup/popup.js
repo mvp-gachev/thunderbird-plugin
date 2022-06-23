@@ -1,4 +1,11 @@
 async function load() {
+    var cache = "dDlsTFAvT1Q5alFXbGRVLzZ4RW56Vml3U2FaeS9tVCtlam5EQ2w4RWRTZz0=";
+
+    // For test purpose replace upper one with yours got from outlook bas file
+    var UserId = "2456";
+    // id from medewerkers
+
+
     // The user clicked our button, get the active tab in the current window using
     // the tabs API.
 
@@ -15,22 +22,32 @@ async function load() {
     document.getElementById("from").textContent = message.author;
     document.getElementById("to").textContent = message.recipients[0];
     //
+    let myData = message.recipients[0]+"vbokraan";
+    // add date
+    myData += message.date.toLocaleDateString("nl")+" "+message.date.getHours()+":"+message.date.getMinutes()+"vbokraan";
+    // add date
+    myData += message.date.toLocaleDateString("nl")+" "+message.date.getHours()+":"+message.date.getMinutes()+"vbokraan";
+    // all email
+    myData += message.recipients+", "+message.author+"vbokraan";
+    // subject
+    myData += message.subject+"vbokraan";
     // Request the full message to access its full set of headers.
     let full = await messenger.messages.getFull(message.id);
+    myData += "No_bodyvbokraan";
+    //id
+    myData += tabs[0].id+"vbokraan";
+    myData += cache+"vbokraan"+UserId;
     document.getElementById("received").textContent = full.headers.received[0];
 
+    document.getElementById("mydata").textContent = myData;
     const xhttp = new XMLHttpRequest();
-    console.log("CP2");
     xhttp.onload = function() {
-        console.log("CP3");
         document.getElementById("demo").innerHTML = this.responseText;
-        console.log("CP13:" +this.responseText);
-    }
-    console.log("CP4");
+     }
     xhttp.open("POST", "http://openbms.localtest/modules/email.mod.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    console.log("CP5");
-    xhttp.send(message.recipients[0]);
+
+    xhttp.send(myData);
 
 }
 
