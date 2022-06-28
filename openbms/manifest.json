@@ -12,7 +12,7 @@
 
   "message_display_action": {
     "default_popup": "messagePopup/popup.html",
-    "default_title": "Send open email data to OpenBMS",
+    "default_title": "OpenBMS connector",
     "default_icon": "images/internet-32px.png"
   },
   "permissions": [
